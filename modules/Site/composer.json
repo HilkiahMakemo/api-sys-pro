@@ -1,0 +1,25 @@
+{
+    "name": "hm-systems/site",
+    "description": "",
+    "authors": [
+        {
+            "name": "hilkiah makemo",
+            "email": "hilmak01@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Site\\Providers\\SiteServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Site\\": ""
+        }
+    }
+}
