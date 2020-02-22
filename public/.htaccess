@@ -1,5 +1,7 @@
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+    Header set Access-Control-Allow-Methods "GET,POST,OPTIONS,DELETE,PUT"
 </IfModule>
 
 <IfModule mod_rewrite.c>
@@ -21,5 +23,7 @@
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteRule ^ index.php [L,QSA]
+
+
 </IfModule>

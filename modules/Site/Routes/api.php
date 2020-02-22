@@ -14,5 +14,13 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/site', function (Request $request) {
-    return $request->user();
+    // return $request->user();
+    Route::get('/', 'SiteController@index');
+    Route::resource('page', PageController::class);
+    Route::resource('tree', TreeController::class);
+});
+Route::prefix('site')->group(function() {
+    Route::get('/', 'SiteController@index');
+    Route::resource('page', PageController::class);
+    Route::resource('tree', TreeController::class);
 });

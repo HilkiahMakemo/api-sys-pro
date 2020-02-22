@@ -5,6 +5,7 @@ namespace Modules\Site\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Site\Http\Resources\TreeResource;
 use Modules\Site\Models\SiteTree;
 
 class TreeController extends Controller
@@ -15,7 +16,11 @@ class TreeController extends Controller
      */
     public function index(SiteTree $Tree)
     {
-        return $Tree->all();
+        $where['site_tree_id'] = request('id') ?? -1;
+
+        $Resource = $Tree->where($where)->get();
+
+        return TreeResource::collection($Resource);
     }
 
     /**
@@ -32,9 +37,10 @@ class TreeController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(SiteTree $Tree,Request $request)
     {
         //
+        return $Tree->firstOrCreate($request->input());
     }
 
     /**
@@ -42,9 +48,9 @@ class TreeController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function show(SiteTree $Tree, $id)
     {
-        return view('site::show');
+        return $Tree->find($id) ?? [];
     }
 
     /**
