@@ -34,9 +34,9 @@ class SiteTree extends Model
 
     public function getUrlAttribute()
     {
-        $urlRoute = $this->route;
-        $parentURL = $this->parent->url ?? null;
+        $thisRoute = $this->route;
+        $parentURL = $this->parent->url ?? "";
 
-        return $parentURL.$urlRoute;
+        return '/'. trim($parentURL.$thisRoute, '/\\');
     }
 }

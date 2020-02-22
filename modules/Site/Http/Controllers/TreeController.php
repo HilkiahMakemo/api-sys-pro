@@ -48,9 +48,11 @@ class TreeController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show(SiteTree $Tree, $id)
+    public function show($id)
     {
-        return $Tree->find($id) ?? [];
+        $Tree = SiteTree::find($id);
+        if(empty($Tree)) return [];
+        return new TreeResource($Tree);
     }
 
     /**
