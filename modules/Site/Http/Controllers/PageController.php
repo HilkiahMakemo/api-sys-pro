@@ -16,7 +16,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('site::index');
+        $where['site_tree_id'] = request('id') ?? -1;
+        $Page = SitePage::where($where)->get();
+        return PageResource::collection($Page);
     }
 
     /**

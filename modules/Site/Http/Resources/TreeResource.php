@@ -21,6 +21,7 @@ class TreeResource extends Resource
             'label' => $this->label,
             'route' => $this->route,
             'url' => $this->url,
+            'pages' => $this->collection($this->pages),
             'parent' => $this->parent,
             'children' => $this->collection($this->children)
         ];

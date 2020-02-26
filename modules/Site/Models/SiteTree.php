@@ -14,6 +14,11 @@ class SiteTree extends Model
         'metadata'
     ];
 
+    public function Pages()
+    {
+        return $this->hasMany(SitePage::class);
+    }
+
 
     public function Children()
     {
