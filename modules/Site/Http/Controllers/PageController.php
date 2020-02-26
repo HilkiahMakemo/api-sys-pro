@@ -4,7 +4,9 @@ namespace Modules\Site\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Site\Models\SitePage;
 use Illuminate\Routing\Controller;
+use Modules\Site\Http\Resources\PageResource;
 
 class PageController extends Controller
 {
@@ -43,7 +45,8 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        return view('site::show');
+        $Page = SitePage::find($id);
+        return new PageResource($Page);
     }
 
     /**

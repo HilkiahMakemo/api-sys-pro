@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSitepagesTable extends Migration
+class CreateSitePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSitepagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sitepages', function (Blueprint $table) {
+        Schema::create('site_pages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->default(-1);
             $table->bigInteger('site_tree_id')->default(-1);
